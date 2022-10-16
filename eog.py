@@ -1,6 +1,6 @@
 # from serial.tools import list_ports
 # import serial
-# import time
+import time
 # import csv
 
 import numpy as np
@@ -10,7 +10,12 @@ import neurokit2 as nk
 
 eog_signal = nk.data('eog_100hz')
 eog_cleaned = nk.eog_clean(eog_signal, sampling_rate = 100, method = 'neurokit')
-nk.signal_plot(eog_signal)
+nk.signal_plot([eog_signal[100:1700], eog_cleaned[100:1700]], 
+               labels=["Raw Signal", "Cleaned Signal"])
+plt.show()
+
+
+# time.sleep(5)
 # ports = list_ports().comports()
 # for port in ports: 
 #     print(port)
